@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap');
+
+:root {
+  --ink: #24124d;
+  --purple: #5a2fd9;
+  --lilac: #e9e1ff;
+  --wash: #f5f2ff;
+  --line: #d9d0f2;
+  --grid: #efeafb;
+  --muted: #6c6488;
+  --error: #c0173b;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  color: var(--ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #fff;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+::selection {
+  background: var(--lilac);
+}
+
+/* layout */
+.app {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  align-items: start;
+}
+
+.exam {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 6px solid var(--purple);
+  padding: 28px 32px 40px;
+  min-height: 60vh;
+}
+
+/* sidebar nav */
+nav {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 40px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+nav button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 12px 14px;
+  border: none;
+  border-left: 5px solid transparent;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  text-align: left;
+  font-weight: 600;
+}
+
+nav button:last-child {
+  border-bottom: none;
+}
+
+nav button small {
+  margin-top: 2px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+nav button:hover:not(:disabled) {
+  background: var(--wash);
+}
+
+nav button.active {
+  background: var(--lilac);
+  border-left-color: var(--purple);
+  font-weight: 800;
+}
+
+/* text */
+h1 {
+  margin: 0 0 24px;
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+h3 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+/* buttons */
+button {
+  font: inherit;
+  padding: 8px 14px;
+  margin: 0 8px 8px 0;
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: var(--lilac);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+button[type='submit'] {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+  font-weight: 600;
+}
+
+button[type='submit']:hover:not(:disabled) {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 2px;
+}
+
+/* fields */
+input,
+select {
+  font: inherit;
+  padding: 8px 10px;
+  margin: 0 12px 10px 0;
+  border: none;
+  border-bottom: 2px solid var(--ink);
+  border-radius: 0;
+  background: var(--wash);
+  color: var(--ink);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-bottom-color: var(--purple);
+  background: var(--lilac);
+}
+
+label {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+form div {
+  margin-bottom: 16px;
+}
+
+form div input {
+  width: 100%;
+  max-width: 420px;
+  margin-right: 0;
+}
+
+form div p {
+  margin: 4px 0 0;
+  color: var(--error);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* lists */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+li button {
+  margin: 0 0 0 8px;
+  padding: 3px 10px;
+  font-size: 0.875rem;
+}
+
+/* small screens */
+@media (max-width: 720px) {
+  .app {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 12px;
+  }
+
+  nav {
+    flex-direction: row;
+    position: static;
+    overflow-x: auto;
+  }
+
+  nav button {
+    width: auto;
+    flex: 0 0 auto;
+    border-left: none;
+    border-bottom: 5px solid transparent;
+  }
+
+  nav button.active {
+    border-bottom-color: var(--purple);
+  }
+
+  .exam {
+    padding: 20px 16px 32px;
+  }
+}
